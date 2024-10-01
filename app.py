@@ -50,7 +50,7 @@ def assignemt_3():
     #Getting the weather on the ISS location:
     weather = get_weathers(Iss_latitude, Iss_longitude)
 
-    temp_c = round (weather["main"]['temp']-273.15,2)
+    temp_c = round (weather["main"]['temp'])
     description = weather ["weather"][0]["description"]
 
     print(f'The temperature is: {temp_c}')
@@ -60,18 +60,26 @@ def assignemt_3():
     #Reverse Geolocation:
     #calling the function:
     add = address(Iss_latitude,Iss_longitude)
-    print(add)
+    #print(add)
     #print(name = add["countryCode"])
     #Print the country Code:
 
-    #Analysis if the ISS is over water:
+    #Analysis if the ISS is over water to get the flag of the country where it is:
     if(add["countryCode"] == ""):
         print("The ISS is over water")
+        ISS_country = "the Ocean"
+        flag_dynamic = "static/images/Ocean.jpg"
     else:
         location = add["countryCode"]
         print(f"The country Code is: {location}")
-        flag = country(location)[0]["flags"]["png"]
-        print(flag)
+        flag_dynamic = country(location)[0]["flags"]["png"]
+        ISS_country = country(location)[0]["countryName"]
+        #print(flag)
+
+    #Additional code to pass the flag of Peru for this code: 
+    location = country("pe")
+    flag_static = country("pe")[0]["flags"]["png"]
+
 
     #Find the distance between Cambrian College us and the ISS(Using stackoverflow):
     
@@ -84,7 +92,10 @@ def assignemt_3():
     print(f"The distance between sudbury and ISS is: {distance} in Km")
 
 
-    return render_template("assignment_3.html", Latitude = Iss_latitude, Longitude = Iss_longitude)
+    return render_template("assignment_3.html", Latitude = Iss_latitude, Longitude = Iss_longitude, 
+                           Temperature = temp_c, Description = description,
+                           Country_Name = ISS_country ,Flag_static = flag_static,Flag_dynamic = flag_dynamic,
+                           Distance = distance )
 
 
 

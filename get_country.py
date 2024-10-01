@@ -7,5 +7,5 @@ def country(name):
     url = f"https://restcountries.com/v3.1/alpha?codes={name}"
     request = urllib.request.urlopen(url)
     result = json.loads(request.read())
-    print(result)
+    #print(result)
     return result

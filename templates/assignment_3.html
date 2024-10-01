@@ -55,27 +55,44 @@
 				<!-- Wrapper -->
 				<!-- This section states the information of the climate in subdury -->
 					<section id="wrapper">
+
 						<header>
+						<center>
 							<div class="inner">
 								<h2>This Web is for Assignment 3 of Connected Data</h2>
 								<p>Cambrian College</p>
 								<br>
-								<h4>The International Space Station is located now in: </h4>
+								<h3>The International Space Station is located now in: </h3>
 								<p>Latitude: {{Latitude}}, Longitude: {{Longitude}} </p>
+
 							<section>
 								<div class="box alt">
 									<div class="row gtr-uniform">
-										<div  class="col-12"><span class="image fit"><img  src="static/images/Licenses.png"  alt=""  /></span></div>
+										<div  class="col-12"><span class="image fit"><img  src="static/images/ISS_image.jpg"  alt=""  /></span></div>
 									</div>
 								</div>
 								<br>
-								<h4>The International Space Station is located now in: </h4>
-								<p>Latitude: {{Latitude}}, Longitude: {{Longitude}} </p>
+								<h3>The weather below the International Space Station is: </h3>
+								<p>Temperature: {{Temperature}} Centigrades</p>
+								<p>The weather now is: {{Description}}</p>
 							</section>
 
+							<h3>Location of the International Space Station: </h3>
+							<p> The ISS is over: {{Country_Name}}</p>
+
+							<div class="row gtr-uniform"></div>
+								<div  class="col-4"><span class="image fit"><img  src={{Flag_dynamic}}  style="width:250px;", alt=""  /></span></div>
+								<p> Additionally, the Flag of Peru is:</p>
+								<div  class="col-4"><span class="image fit"><img  src={{Flag_static}}  style="width:250px;", alt=""  /></span></div>
+								<br>
+								<h3>The distance between Sudbury and the ISS is: </h3>
+								<p>Distance: {{Distance}} Km</p>
 							</div>
+
+
+
+						</center>
 						</header>
-		
 					</section>
 
 			</div>
