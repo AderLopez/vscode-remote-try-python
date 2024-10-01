@@ -84,7 +84,7 @@ def assignemt_3():
     print(f"The distance between sudbury and ISS is: {distance} in Km")
 
 
-    return render_template("assignment_3.html")
+    return render_template("assignment_3.html", Latitude = Iss_latitude, Longitude = Iss_longitude)
 
 
 
