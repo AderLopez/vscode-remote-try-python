@@ -44,7 +44,11 @@ def assignemt_3():
     Iss_latitude, Iss_longitude, url_google = data
     #Additional method to obtain the information:
     #latitude, longitude = data[0],data[1]
-
+    
+    #Coordinates for Peru for testing:
+    #Iss_latitude= -13.2577
+    #Iss_longitude= -76.1413
+    
     print(f"The ISS is located in: {Iss_latitude}, {Iss_longitude}")
 
     #Getting the weather on the ISS location:
@@ -70,11 +74,13 @@ def assignemt_3():
         ISS_country = "the Ocean"
         flag_dynamic = "static/images/Ocean.jpg"
     else:
-        location = add["countryCode"]
+        #Location needs to be in lower case:
+        location = add["countryCode"].lower()
         print(f"The country Code is: {location}")
         flag_dynamic = country(location)[0]["flags"]["png"]
-        ISS_country = country(location)[0]["countryName"]
-        #print(flag)
+        print(f'The link of the flag is the following: {flag_dynamic}')
+        ISS_country = country(location)[0]["name"]["common"]
+        print(f'The name of the country is: {ISS_country}')
 
     #Additional code to pass the flag of Peru for this code: 
     location = country("pe")
