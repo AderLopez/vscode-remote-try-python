@@ -14,7 +14,7 @@ from get_iss import iss_loc
 from get_weather import get_weathers
 
 
-
+#Normal path when not using a specific folder:
 #@app.route("/")
 #def hello():
 #    return app.send_static_file("index.html")
@@ -32,6 +32,8 @@ def Index():
 #Assignment 3 new tab:
 @app.route('/assignment_3')
 def assignemt_3():
+    
+    #Importing the libraries necessary:
     from get_iss import iss_loc
     from get_weather import get_weathers
     from get_distance import distances
@@ -40,33 +42,33 @@ def assignemt_3():
 
     #Calling Iss_loc to get ISS latitude and longitude
     data = iss_loc()
+
     #Getting the latitude and longitude from data
     Iss_latitude, Iss_longitude, url_google = data
-    #Additional method to obtain the information:
-    #latitude, longitude = data[0],data[1]
+
+        #Additional method to obtain the information:
+        #latitude, longitude = data[0],data[1]
     
-    #Coordinates for Peru for testing:
-    #Iss_latitude= -13.2577
-    #Iss_longitude= -76.1413
+        #Coordinates for Peru for testing:
+        #Iss_latitude= -13.2577
+        #Iss_longitude= -76.1413
     
+    #Printing in the console the coordinates information:
     print(f"The ISS is located in: {Iss_latitude}, {Iss_longitude}")
 
     #Getting the weather on the ISS location:
     weather = get_weathers(Iss_latitude, Iss_longitude)
 
+    #Weather is the jason variable that has Variables as temperature and description:
     temp_c = round (weather["main"]['temp'])
     description = weather ["weather"][0]["description"]
-
+    #Printing the values in console as checking point:
     print(f'The temperature is: {temp_c}')
     print(f'The description is: {description}')
 
 
-    #Reverse Geolocation:
-    #calling the function:
+    #Calling Reverse Geolocation:
     add = address(Iss_latitude,Iss_longitude)
-    #print(add)
-    #print(name = add["countryCode"])
-    #Print the country Code:
 
     #Analysis if the ISS is over water to get the flag of the country where it is:
     if(add["countryCode"] == ""):
@@ -76,10 +78,13 @@ def assignemt_3():
     else:
         #Location needs to be in lower case:
         location = add["countryCode"].lower()
+        #Checkpoint to see the location
         print(f"The country Code is: {location}")
         flag_dynamic = country(location)[0]["flags"]["png"]
+        #Checkpoint to see the flag link
         print(f'The link of the flag is the following: {flag_dynamic}')
         ISS_country = country(location)[0]["name"]["common"]
+        #Checkpoint to see the country name
         print(f'The name of the country is: {ISS_country}')
 
     #Additional code to pass the flag of Peru for this code: 
@@ -149,7 +154,7 @@ def bmi():
         #Returning the two messages for the user with the calculation and evaluation of BMI.
         return render_template('bmi.html', bmi = bmi, message = message)
     
-    #Normal Get request, when there is no informaiton sent:
+    #Normal Get request, when there is no information sent:
     elif request.method == 'GET':
       return render_template("bmi.html")
 
