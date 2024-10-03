@@ -41,7 +41,7 @@ def assignemt_3():
     #Calling Iss_loc to get ISS latitude and longitude
     data = iss_loc()
     #Getting the latitude and longitude from data
-    Iss_latitude, Iss_longitude = data
+    Iss_latitude, Iss_longitude, url_google = data
     #Additional method to obtain the information:
     #latitude, longitude = data[0],data[1]
 
@@ -92,7 +92,7 @@ def assignemt_3():
     print(f"The distance between sudbury and ISS is: {distance} in Km")
 
 
-    return render_template("assignment_3.html", Latitude = Iss_latitude, Longitude = Iss_longitude, 
+    return render_template("assignment_3.html", Latitude = Iss_latitude, Longitude = Iss_longitude, Link = url_google,
                            Temperature = temp_c, Description = description,
                            Country_Name = ISS_country ,Flag_static = flag_static,Flag_dynamic = flag_dynamic,
                            Distance = distance )
